@@ -1,12 +1,19 @@
 import { css } from "@emotion/css";
 
 export const starshipCardStyles = css({
-  display: "flex",
   backgroundColor: "#232524",
   maxWidth: 596,
   minWidth: 347,
   padding: 24,
   borderRadius: 15.7361,
+});
+
+export const starshipCardInfoContainerStyles = css({
+  position: "relative",
+  display: "flex",
+  h2: {
+    margin: "0 0 16px 0",
+  },
 });
 
 export const starshipCardImageStyles = css({
@@ -19,8 +26,8 @@ export const starshipCardImageStyles = css({
 
 export const starshipCardHeartImageStyles = css({
   position: "absolute",
-  right: 50,
-  top: 75,
+  right: 35,
+  top: 35,
   backgroundColor: "#232524",
   borderRadius: 100,
   width: 42,
@@ -38,5 +45,21 @@ export const starshipCardRatingContainerStyles = css({
   marginBottom: 12,
   "&>img": {
     marginRight: 8,
+  },
+});
+
+export const starshipCardNotesContainer = css({
+  marginTop: 16,
+  textarea: {
+    width: "100%",
+    backgroundColor: "transparent",
+    border: "1px solid #D9D9D9",
+    boxSizing: "border-box",
+    borderRadius: 10,
+    resize: "none",
+    height: 110,
+    color: "#ffffff",
+    padding: 13,
+    fontSize: 18,
   },
 });
