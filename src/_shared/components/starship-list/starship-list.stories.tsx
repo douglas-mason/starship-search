@@ -1,7 +1,7 @@
 import React from "react";
 import { ComponentStory, ComponentMeta } from "@storybook/react";
-import { StarshipList } from "./starship-list.page";
-import { Starship } from "../types/api.types";
+import { StarshipList } from "./starship-list.component";
+import { Starship } from "../../../types/api.types";
 
 const mockData: Starship = {
   hyperdrive_rating: "4.0",
@@ -23,4 +23,18 @@ const Template: ComponentStory<typeof StarshipList> = (args) => (
 export const List = Template.bind({});
 List.args = {
   items: [mockData, mockData],
+};
+
+export const FavoritesList = Template.bind({});
+FavoritesList.args = {
+  items: [
+    {
+      ...mockData,
+      notes: "This one is interesting",
+    },
+    {
+      ...mockData,
+      notes: "Best one in the fleet",
+    },
+  ],
 };

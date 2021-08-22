@@ -11,3 +11,7 @@ export interface Starship {
   name: string;
   passengers: string;
 }
+
+export interface Favorite extends Starship {
+  notes: string;
+}

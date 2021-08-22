@@ -1,7 +1,7 @@
 import React from "react";
 import { ComponentStory, ComponentMeta } from "@storybook/react";
 import { StarshipCard } from "./starship-card.component";
-import { Starship } from "../../types/api.types";
+import { Starship } from "../../../types/api.types";
 
 const mockData: Starship = {
   hyperdrive_rating: "4.0",
@@ -24,6 +24,13 @@ export const Card = Template.bind({});
 Card.args = {
   isFavorite: false,
   starship: mockData,
+};
+
+export const FavoriteCardWithNotes = Template.bind({});
+FavoriteCardWithNotes.args = {
+  isFavorite: true,
+  starship: mockData,
+  showNotes: true,
 };
 
 export const FavoriteCard = Template.bind({});

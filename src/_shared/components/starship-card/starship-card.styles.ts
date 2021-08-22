@@ -11,6 +11,7 @@ export const starshipCardStyles = css({
 export const starshipCardInfoContainerStyles = css({
   position: "relative",
   display: "flex",
+  justifyContent: "space-between",
   h2: {
     margin: "0 0 16px 0",
   },
@@ -62,4 +63,12 @@ export const starshipCardNotesContainer = css({
     padding: 13,
     fontSize: 18,
   },
+});
+
+export const starshipFavoriteButtonStyles = css({
+  padding: 0,
+  margin: 0,
+  background: "none",
+  border: "none",
+  cursor: "pointer",
 });
