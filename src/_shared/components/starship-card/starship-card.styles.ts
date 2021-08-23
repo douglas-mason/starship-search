@@ -2,10 +2,13 @@ import { css } from "@emotion/css";
 
 export const starshipCardStyles = css({
   backgroundColor: "#232524",
-  maxWidth: 596,
-  minWidth: 347,
+  minWidth: 350,
+  width: 600,
   padding: 24,
-  borderRadius: 15.7361,
+  borderRadius: 15,
+  "@media (max-width: 700px)": {
+    width: 250,
+  },
 });
 
 export const starshipCardInfoContainerStyles = css({
@@ -20,15 +23,21 @@ export const starshipCardInfoContainerStyles = css({
 export const starshipCardImageStyles = css({
   display: "flex",
   alignItems: "center",
+
+  "@media (max-width: 700px)": {
+    maxWidth: 200,
+    overflow: "hidden",
+  },
   "> img": {
     borderRadius: 8,
+    marginLeft: 15,
   },
 });
 
 export const starshipCardHeartImageStyles = css({
   position: "absolute",
-  right: 35,
-  top: 35,
+  right: 10,
+  top: 10,
   backgroundColor: "#232524",
   borderRadius: 100,
   width: 42,

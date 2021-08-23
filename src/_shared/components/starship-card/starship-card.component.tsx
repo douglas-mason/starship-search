@@ -1,5 +1,5 @@
-import React, { SyntheticEvent } from "react";
-import { Starship } from "../../../types/api.types";
+import React, { useState } from "react";
+import { Favorite, Starship } from "../../../types/api.types";
 import StarshipImg from "../../../assets/starship.png";
 import EmptyHeartImg from "../../../assets/empty_heart.svg";
 import FullHeardImg from "../../../assets/full_heart.svg";
@@ -15,13 +15,14 @@ import {
   starshipCardStyles,
   starshipFavoriteButtonStyles,
 } from "./starship-card.styles";
+import { useEffect } from "react";
 
 interface Props {
   isFavorite?: boolean;
   showNotes?: boolean;
-  starship: Starship;
+  starship: Starship | Favorite;
   onFavoriteClick: () => void;
-  onUpdateNotes?: (notes?: string | null) => void;
+  onUpdateNotes?: (item: Favorite, notes?: string | null) => void;
 }
 
 export const StarshipCard: React.FC<Props> = ({
@@ -31,6 +32,12 @@ export const StarshipCard: React.FC<Props> = ({
   onFavoriteClick,
   onUpdateNotes,
 }) => {
+  const [notes, setNotes] = useState("");
+
+  useEffect(() => {
+    setNotes((starship as Favorite).notes);
+  }, []);
+
   const getStars = (rating: number) => {
     const starComponents = [];
     let counter = rating;
@@ -44,11 +51,11 @@ export const StarshipCard: React.FC<Props> = ({
     }
     return starComponents;
   };
-
-  const onNoteChange = (e: SyntheticEvent) => {
-    const notes = e.currentTarget.textContent;
+  const onNoteChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
+    const notes = e.target.value;
     if (onUpdateNotes) {
-      onUpdateNotes(notes);
+      onUpdateNotes(starship as Favorite, notes);
+      setNotes(notes);
     }
   };
 
@@ -70,6 +77,7 @@ export const StarshipCard: React.FC<Props> = ({
         </div>
         <div className={starshipCardHeartImageStyles}>
           <button
+            aria-roledescription="Toggle Favorite"
             onClick={onFavoriteClick}
             className={starshipFavoriteButtonStyles}
           >
@@ -82,7 +90,12 @@ export const StarshipCard: React.FC<Props> = ({
       </div>
       {showNotes && (
         <div className={starshipCardNotesContainer}>
-          <textarea onChange={onNoteChange} placeholder="Add text" />
+          <textarea
+            aria-roledescription="Personal notes"
+            value={notes}
+            onChange={onNoteChange}
+            placeholder="Add text"
+          />
         </div>
       )}
     </div>

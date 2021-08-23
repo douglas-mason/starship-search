@@ -7,12 +7,14 @@ interface FavoritesState {
   favorites: Favorite[];
   add: (favorite: Starship) => void;
   remove: (favorite: Favorite) => void;
+  update: (favoriteName: string, notes: string) => void;
 }
 
 const defaultContext: FavoritesState = {
   favorites: [],
   add: () => {},
   remove: () => {},
+  update: () => {},
 };
 
 const FavoritesContext = createContext<FavoritesState>(defaultContext);
@@ -30,6 +32,7 @@ export const FavoritesProvider: React.FC = ({ children }) => {
       },
     ]);
   };
+
   const removeFromFavorites = (favorite: Favorite) => {
     const mutableFavorites = [...favorites];
 
@@ -40,12 +43,22 @@ export const FavoritesProvider: React.FC = ({ children }) => {
     }
     setFavorites([...mutableFavorites]);
   };
+
+  const updateFavorite = (favoriteName: string, notes: string) => {
+    const mutableFavorites = [...favorites];
+    const itemToUpdate = favorites.find((i) => i.name === favoriteName);
+    if (!itemToUpdate) return;
+    itemToUpdate.notes = notes;
+    setFavorites(mutableFavorites);
+  };
+
   return (
     <FavoritesContext.Provider
       value={{
         favorites,
         add: addToFavorites,
         remove: removeFromFavorites,
+        update: updateFavorite,
       }}
     >
       {children}
