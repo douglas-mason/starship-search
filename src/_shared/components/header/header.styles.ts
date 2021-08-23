@@ -23,4 +23,5 @@ export const headerFavoritesButtonStyles = css({
   cursor: "pointer",
   backgroundColor: "#232524",
   color: "#FF6871",
+  textDecoration: "none",
 });
