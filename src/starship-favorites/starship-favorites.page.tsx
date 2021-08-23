@@ -1,5 +1,4 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import { Favorite } from "../types/api.types";
 import { Header } from "../_shared/components/header/header.component";
 import { StarshipList } from "../_shared/components/starship-list/starship-list.component";

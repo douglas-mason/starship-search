@@ -31,7 +31,7 @@ export const StarshipListPage: React.FC<Props> = () => {
 
   useEffect(() => {
     populateStarships();
-  }, []);
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
   const handlePreviousClick = paginationUrls?.previous
     ? () => populateStarships(paginationUrls.previous)
