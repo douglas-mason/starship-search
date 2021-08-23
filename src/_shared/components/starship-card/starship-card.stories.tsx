@@ -1,15 +1,7 @@
 import React from "react";
 import { ComponentStory, ComponentMeta } from "@storybook/react";
 import { StarshipCard } from "./starship-card.component";
-import { Starship } from "../../../types/api.types";
-
-const mockData: Starship = {
-  hyperdrive_rating: "4.0",
-  manufacturer:
-    "Imperial Department of Military Research, Sienar Fleet Systems",
-  name: "Death Star",
-  passengers: "843342",
-};
+import { mockData } from "../../../__mocks__/starship.mock";
 
 export default {
   title: "Starship/Card",
