@@ -36,7 +36,7 @@ export const StarshipCard: React.FC<Props> = ({
 
   useEffect(() => {
     setNotes((starship as Favorite).notes);
-  }, []);
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
   const getStars = (rating: number) => {
     const starComponents = [];
